@@ -8,6 +8,8 @@ ADD initXETemp.ora /
 
 RUN apt-get update && \
     apt-get install -y libaio1 net-tools bc && \
+    apt-get install -y openssh-server && \
+    mkdir -p /var/run/sshd && \
     apt-get autoremove && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -33,6 +35,7 @@ RUN echo 'export ORACLE_SID=XE' >> /etc/bash.bashrc
 
 VOLUME /usr/lib/oracle/xe/oradata/XE
 
+EXPOSE 22
 EXPOSE 1521
 EXPOSE 8080
 
