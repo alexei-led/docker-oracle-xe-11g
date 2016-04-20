@@ -1,6 +1,7 @@
 FROM buildpack-deps:trusty-curl
 
 MAINTAINER Alexei Ledenev <alexei.led@gmail.com>
+MAINTAINER github.com/PengBAI
 
 COPY chkconfig /sbin/chkconfig
 COPY init.ora /

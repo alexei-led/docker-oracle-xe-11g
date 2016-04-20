@@ -1,36 +1,33 @@
 docker-oracle-xe-11g
 ============================
 
-## Oracle XE - Dockerfile
-
 This repository contains a **Dockerfile** to create a docker container with Oracle Express Edition 11g Release 2 and Ubuntu 14.04 LTS (Trusty)
 
-This **Dockerfile** has been published as a [trusted build](https://index.docker.io/u/alexeiled/docker-oracle-xe-11g/) to the public [Docker Registry](https://index.docker.io/).
+[![](https://imagelayers.io/badge/pengbai/docker-oracle-xe-11g-r2:latest.svg)](https://imagelayers.io/?images=pengbai/docker-oracle-xe-11g-r2:latest 'Get your own badge on imagelayers.io')
 
+Image on docker hub: [https://hub.docker.com/r/pengbai/docker-oracle-xe-11g-r2/](https://hub.docker.com/r/pengbai/docker-oracle-xe-11g-r2/)
 
-### How-To: Build this image
+### Description
 
-If you want to build this image and use latest Oracle XE version, you will need to download Oracle XE from Oracle [site](http://www.oracle.com/technetwork/database/database-technologies/express-edition/downloads/index.html).
-
-Then you will also need to convert download **rpm** file into **deb**, using `alien` tool.
-
-Run following command to convert downloaded **rpm** package into **deb**.
-```
-sudo alien oracle-xe-11.2.0-1.0.x86_64.rpm
-```
-
-I also keep, already downloaded Oracle XE image in GitHub repository, split into 3 pieces, due to GitHub 100MB file limit. Original file is split by running `split` command and merged back with `cat` command (Google for how to use both commands).
-
-### How-To: Install and Use
+Pull image:
 
 ```
-docker pull alexeiled/docker-oracle-xe-11g
+docker pull pengbai/docker-oracle-xe-11g-r2
 ```
+Run with 8080 and 1521 ports opened:
+
 **Note:** It's important to run Oracle XE with >1GB shared memory.
 
-**Example**: Running Oracle XE in `detached` mode with `1521` and `8080` ports opened and `2GB` shared memory:
+**Example**: Running Oracle XE in `detached` mode with `1521` and `8080` ports opened and `1GB` shared memory:
+
 ```
-docker run -d --shm-size=2g -p 1521:1521 -p 8080:8080 alexeiled/docker-oracle-xe-11g
+docker run -d --shm-size=1g -p 1521:1521 -p 8080:8080 pengbai/docker-oracle-xe-11g-r2
+```
+**NEW!** Option: Execute automatically scripts sql when contaner startup:
+
+In folder where you put your ```*.sql``` files for database init from /local-initdb to ```/entrypoint-initdb.d``` in contaner
+```
+docker run -d -p 8080:8080 -p 1521:1521 -v /local-initdb:/entrypoint-initdb.d pengbai/docker-oracle-xe-11g-r2
 ```
 
 Connect database with following setting:
