@@ -1,6 +1,10 @@
 docker-oracle-xe-11g
 ============================
 
+## !!! UPDATE
+
+> Since 2019-Feb-13(the Valentine's day eve) this docker image has been removed by DockerHub due to the Docker DMCA Takedown Notice from the Copyright owner which is the Oracle.
+
 ## Oracle XE - Dockerfile
 
 This repository contains a **Dockerfile** to create a docker container with Oracle Express Edition 11g Release 2 and Ubuntu 14.04 LTS (Trusty)
